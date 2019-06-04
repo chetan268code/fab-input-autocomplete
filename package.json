@@ -28,5 +28,9 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://maps.googleapis.com"
+  "proxy": "https://maps.googleapis.com",
+  "devDependencies": {
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0"
+  }
 }

@@ -7,8 +7,9 @@ function Suggestion(props) {
     const icon = suggestion.type === 'location' ? location_icon : hotel_icon;
 
     return (
-        <li onClick={onClick} className="dropdown-content">
-        	<img className="suggestions_icon" src={icon} alt="Location" />{suggestion.name}
+        <li onClick={onClick} className="dropdown-content" data-test="dropdown-content">
+            <img className="suggestions_icon" src={icon} alt="Location" />
+            <span data-test="suggestion-name">{suggestion.name}</span>
         </li>
     )
 }

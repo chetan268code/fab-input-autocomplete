@@ -153,49 +153,40 @@ class Autocomplete extends Component {
 				});
 
         suggestionsListComponent = (
-          <ul className="suggestions">
+          <ul className="suggestions" data-test="suggestions">
 						<li className="dropdown-title">Locations</li>
 						{locations.map((suggestion, index) => {
 							return (
-								<Suggestion key={index} onClick={onClick}suggestion={suggestion} />
+								<Suggestion data-test="suggestion" key={index} onClick={onClick}suggestion={suggestion} />
 							);
 						})}
 						<li className="dropdown-title">Hotels</li>
 						{establishments.map((suggestion, index) => {
 							return (
-								<Suggestion key={index} onClick={onClick} suggestion={suggestion} />
+								<Suggestion data-test="suggestion" key={index} onClick={onClick} suggestion={suggestion} />
 							);
 						})}
           </ul>
         );
       } else {
         suggestionsListComponent = (
-					// <div className="no-suggestions">
-          //   <em>No results found, explore something else!!</em>
-        	// </div>
-					<CustomError msg="No results found, explore something else!!" />
+					<CustomError data-test="no-suggestions-custom-error" msg="No results found, explore something else!!" />
         );
 			}
 		}
 		else if(userInput && warning) {
 			suggestionsListComponent = (
-				// <div className="no-suggestions">
-        //     <em>{warning}</em>
-        // </div>
-				<CustomError msg={warning} />
+				<CustomError data-test="server-custom-error" msg={warning} />
 			);
 		}
 		else {
 			suggestionsListComponent = (
-				// <div className="no-suggestions">
-        //     <em>Waiting for input...</em>
-        // </div>
 				<CustomError msg="" />
 			);
 		}
 
     return (
-      <div>
+      <div data-test="suggestions-wrapper">
         <input type="text" onChange={onChange} onKeyDown={onKeyDown} value={userInput} />
         {suggestionsListComponent}
       </div>
