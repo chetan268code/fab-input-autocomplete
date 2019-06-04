@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Suggestion from './Suggestion';
 import CustomError from './CustomError';
+import throttle from '../Utils/throttle';
 import "../css/Autocomplete.css";
 
 class Autocomplete extends Component {
@@ -23,22 +24,9 @@ class Autocomplete extends Component {
 			warning: ""
     };
 	}
-
-	// Throttle request after every ms seconds
-	debounce = (f, ms) => {
-		let isCooldown = false;
-	
-		return function() {
-			if (isCooldown) return;
-	
-			f.apply(this, arguments);
-			isCooldown = true;
-			setTimeout(() => isCooldown = false, ms);
-		};
-	}
 	
 	// Get suggestions by using Google APIs
-	getSuggestions = this.debounce(() => {
+	getSuggestions = throttle(() => {
 		let userInput = encodeURI(this.state.userInput + ' india');
 
 		let suggestions = [];

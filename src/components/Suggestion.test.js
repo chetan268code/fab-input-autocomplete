@@ -9,24 +9,24 @@ const setUp = (props={}) => {
 }
 
 describe('Suggestion Component', () => {
-    let component;
-    beforeEach(() => {
-        const props = {
-            suggestion: {
-                type: 'location',
-                name: 'Delhi'
-            }
-        }
-        component = setUp(props);
-    });
-  
-    it('Should render without errors', () => {
-      const wrapper = findByTestAttr(component, 'dropdown-content');
-      expect(wrapper.length).toBe(1);
-    })
-  
-    it('Should render with suggestion name', () => {
-      const wrapper = findByTestAttr(component, 'suggestion-name')
-      expect(wrapper.length).toBe(1);
-    })
+  let component;
+  beforeEach(() => {
+    const props = {
+      suggestion: {
+        type: 'location',
+        name: 'Delhi'
+      }
+    }
+    component = setUp(props);
+  });
+
+  it('Should render without errors', () => {
+    const wrapper = findByTestAttr(component, 'dropdown-content');
+    expect(wrapper.length).toBe(1);
   })
+
+  it('Should render with suggestion name', () => {
+    const wrapper = findByTestAttr(component, 'suggestion-name')
+    expect(wrapper.length).toBe(1);
+  })
+})
